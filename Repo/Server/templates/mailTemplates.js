@@ -38,7 +38,7 @@ var VerificationMailTemple = `
                                      <div style="cursor:auto;color:#737F8D;font-family:Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-size:16px;line-height:24px;text-align:left;">
                                         <p><img src="@templateImage" alt="Party Wumpus" title="None" width="500" style="height: auto;"></p>
                                         <h2 style="font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-weight: 500;font-size: 20px;color: #4F545C;letter-spacing: 0.27px;">Hello @merchantName,</h2>
-                                        <p>Thanks for registering an account with Discord! We're excited to work with you.</p>
+                                        <p>Thanks for registering an account with KhawaDawa.com! We're excited to work with you.</p>
                                         <p>Before we get started, we'll need to verify your email.</p>
                                      </div>
                                   </td>

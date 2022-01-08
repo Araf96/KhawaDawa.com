@@ -7,7 +7,7 @@ const templates = require('../templates/mailTemplates')
 
 const sendMail = async (object) => {
     let fullName = object.firstName + " " + object.lastName;
-    console.log(fullName);
+
     if(object.type==="signup verification"){
         let vLink = CONFIG.LOCAL_URL + `/verify?ts=${new Date().getTime()}&vtk=${object.vToken}`;
 
@@ -16,7 +16,7 @@ const sendMail = async (object) => {
         tempTemplate = tempTemplate.replace('@merchantName', fullName);
 
         object.template = tempTemplate;
-        console.log(object);
+
         callSMTP(object);
     }
 

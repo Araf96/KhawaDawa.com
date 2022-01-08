@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 
+const CONFIG = require('../config');
 const {mongoose} = require('./../db/mongoose');
 const utils = require('../utils/utils');
 
@@ -55,6 +56,12 @@ const merchantSchema = mongoose.Schema({
     vToken:{
         type:String
     },
+    profileImage: {
+        type:String
+    },
+    age:{
+        type:Number
+    },
     tokens:[
         {
             access:{
@@ -100,7 +107,11 @@ merchantSchema.methods.toJSON = function(){
 merchantSchema.methods.generateAuthToken = async function(){
     var user = this;
     var access = 'auth';
-    var token = jwt.sign({_id: user._id},'khawaDawa');
+    var token = jwt.sign({_id: user._id},CONFIG.JWT_KEY);
+
+    if(user.tokens.length>=5){
+        throw new Error(CONFIG.MAX_LOGIN);
+    }
 
     user.tokens.push({access,token});
 

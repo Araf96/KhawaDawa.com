@@ -1,3 +1,4 @@
+const { verify } = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
 
 const CONFIG = require('../config')
@@ -9,7 +10,7 @@ const sendMail = async (object) => {
     let fullName = object.firstName + " " + object.lastName;
 
     if(object.type==="signup verification"){
-        let vLink = CONFIG.LOCAL_URL + `/verify?ts=${new Date().getTime()}&vtk=${object.vToken}`;
+        let vLink = CONFIG.LOCAL_URL + `${CONFIG.VERIFY_ROUTE}?ts=${new Date().getTime()}&vtk=${object.vToken}`;
 
         let tempTemplate = templates.VerificationMailTemple.replace('@verificationLink', vLink);
         tempTemplate = tempTemplate.replace('@templateImage', CONFIG.EMAIL_IMAGE_URL);

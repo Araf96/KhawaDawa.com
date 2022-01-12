@@ -12,31 +12,36 @@ const merchantSchema = mongoose.Schema({
         type: String,
         required: [true, "Field FIRST NAME is required"],
         minLength:[3, "Given FIRST NAME is shorter than minimum length (3)"],
-        maxLength:[15, "Given FIRST NAME is greater than maximum length (15)"]
+        maxLength:[15, "Given FIRST NAME is greater than maximum length (15)"],
+        default: null
     },
     lastName:{
         type: String,
         required: [true, "Field LAST NAME is required"],
         minLength:[3, "Given SECOND NAME is shorter than minimum length (3)"],
-        maxLength:[15, "Given SECOND NAME is greater than maximum length (15)"]
+        maxLength:[15, "Given SECOND NAME is greater than maximum length (15)"],
+        default: null
     },
     companyName:{
         type: String,
         unique: [true,"COMPANY already exists with this name"],
         required: [true, "Field COMPANY NAME is required"],
         minLength:[3, "Given COMPANY NAME is shorter than minimum length (3)"],
-        maxLength:[50, "Given COMPANY NAME is greater than maximum length (50)"]
+        maxLength:[50, "Given COMPANY NAME is greater than maximum length (50)"],
+        default: null
     },
     email:{
         type:String,
         unique: [true,"This EMAIL ADDRESS is already registered"],
         required:[true, "Field EMAIL is required"],
-        validate: [validator.isEmail, "INVALID EMAIL"]
+        validate: [validator.isEmail, "INVALID EMAIL"],
+        default: null
     },
     mobile:{
         type:String,
         required:[true, "Field MOBILE is required"],
-        valiadte: [validator.isMobilePhoneLocales, "INVALID MOBILE NUMBER"]
+        valiadte: [validator.isMobilePhoneLocales, "INVALID MOBILE NUMBER"],
+        default: null
     },
     password:{
         type:String,
@@ -44,23 +49,40 @@ const merchantSchema = mongoose.Schema({
         required:true
     },
     phone:{
-        type:String
+        type:String,
+        default: null
     },
     country:{
-        type:String
+        type:String,
+        default: null
     },
     isActive:{
         type:Boolean,
         default:false
     },
     vToken:{
-        type:String
+        type: String,
+        default: null
     },
     profileImage: {
-        type:String
+        type: String,
+        default: null
     },
     age:{
-        type:Number
+        type:Number,
+        default: null
+    },
+    signupDate:{
+        type: Date,
+        default: null
+    },
+    activationDate:{
+        type: Date,
+        default: null
+    },
+    deactivationDate:{
+        type: Date,
+        default: null
     },
     tokens:[
         {

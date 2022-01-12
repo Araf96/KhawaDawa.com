@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 const _ = require('lodash')
 
-const CONFIG = require('../config')
-const {Merchant} = require('../models/merchant')
-const Utils = require('../utils/utils')
+const CONFIG = require('../../config')
+const {Merchant} = require('../../models/merchant')
+const Utils = require('../../utils/utils')
 
 router.post('/', async(req, res)=>{
     let body = _.pick(req.body, ['email','password']);

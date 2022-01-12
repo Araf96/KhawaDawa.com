@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const {Merchant} = require('../models/merchant');
 const CONFIG = require('../config');
-
+ 
 const authenticate = async(req, res, next) => {
 
     let token = req.header('x-auth');

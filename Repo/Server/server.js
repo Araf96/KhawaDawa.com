@@ -3,11 +3,12 @@ const cors = require('cors')
 const axios = require('axios')
 const bodyParser = require('body-parser')
 
-const signup = require('./routes/signup')
-const login = require('./routes/login')
-const logout = require('./routes/logout')
-const verify = require('./routes/verify')
-const updateMerchant = require('./routes/updateMerchant')
+const signup = require('./routes/merchant/signup')
+const login = require('./routes/common/login')
+const logout = require('./routes/common/logout')
+const verify = require('./routes/common/verify')
+const updateMerchant = require('./routes/merchant/updateMerchant')
+const deactivate = require('./routes/common/deactivate')
 
 var port = process.env.PORT || 3000;
 
@@ -19,6 +20,7 @@ app.use("/_verify", verify);
 app.use("/_login_user", login);
 app.use("/_update_merchant", updateMerchant);
 app.use("/_logout_m", logout);
+app.use("/_deactivate", deactivate);
 
 app.listen(port, ()=>{
     console.log(`Server started on port: ${port}`);

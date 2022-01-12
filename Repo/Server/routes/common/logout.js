@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const CONFIG = require('../config')
-const {Merchant} = require('../models/merchant')
+const CONFIG = require('../../config')
+const {Merchant} = require('../../models/merchant')
 
-const {authenticate} = require('../middleware/authenticate')
+const {authenticate} = require('../../middleware/authenticate')
 
 router.use(authenticate);
 

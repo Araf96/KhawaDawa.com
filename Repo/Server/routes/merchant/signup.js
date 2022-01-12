@@ -2,14 +2,15 @@ const express = require('express');
 const router = express.Router();
 const _ = require('lodash');
 
-const CONFIG = require('../config');
-const {Merchant} = require('../models/merchant');
-const Mailer = require('../utils/mailer');
+const CONFIG = require('../../config');
+const {Merchant} = require('../../models/merchant');
+const Mailer = require('../../utils/mailer');
 
 
 router.post('/', async (req, res)=>{
     var merchant = new Merchant( _.pick(req.body,['firstName','lastName','email','password','companyName','mobile']));
-
+    merchant.signupDate = new Date();
+    
     try{
         let result = await merchant.save();
 

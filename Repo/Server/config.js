@@ -20,7 +20,7 @@ module.exports = {
     MAX_LOGIN : "You're already logged in 5 devices. You can not login from more devices",
     LOGOUT_FAILED : "Failed to logout user.",
     TOKEN_EXPIRE_TIME : 1800000,
-    VERIFY_ROUTE : '/_verify_',
+    VERIFY_ROUTE : '/_verify',
     LOGOUT_SUCCESS : "Successfully logged out"
 }
 

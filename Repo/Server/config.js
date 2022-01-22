@@ -21,6 +21,10 @@ module.exports = {
     LOGOUT_FAILED : "Failed to logout user.",
     TOKEN_EXPIRE_TIME : 1800000,
     VERIFY_ROUTE : '/_verify',
-    LOGOUT_SUCCESS : "Successfully logged out"
+    LOGOUT_SUCCESS : "Successfully logged out",
+    DELETE_FAILED :  "Failed to delete menu. Please try again later.",
+    DELETE_SUCCESS : "Menu named: @menuname was deleted." ,
+    UPDATE_FAILED : "Failed to update menu.",
+    INSERT_FAILED : "Failed to insert menu."
 }
 

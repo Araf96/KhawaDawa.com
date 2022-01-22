@@ -10,30 +10,37 @@ const { result } = require('lodash')
 
 router.use(authenticate);
 
-router.put('/', async(req, res)=>{
-    let body = _.pick(req.body,['firstName','lastName','companyName','mobile','country','age']);
+router.post('/', async(req, res)=>{
+    let error = {type: CONFIG.ERROR}
+    if(req.body.user.isActive){
+        let body = _.pick(req.body,['firstName','lastName','companyName','mobile','country','age']);
 
-    let conditions = {"tokens.token": req.header('x-auth')};
-    let update = {};
-
-    for(i in body){
-        update[i] = body[i];
-    }
-
-    let options = {new: true};
+        let conditions = {
+            "tokens.token": req.header('x-auth')
+        };
+        let update = {};
     
-    try{
-        let updatedUser = await Merchant.findOneAndUpdate(conditions, update, options);
-        res.json(updatedUser);
-    }catch(e){
-        let error = {type: CONFIG.ERROR}
-        if(e.message){
-            error.message= e.message;
-        }else{
-            error.message = CONFIG.ERR_UNKNOWN;
+        for(i in body){
+            update[i] = body[i];
         }
-        res.status(400).send(result);
-    }
+    
+        let options = {new: true};
+        
+        try{
+            let updatedUser = await Merchant.findOneAndUpdate(conditions, update, options);
+            res.json(updatedUser);
+        }catch(e){
+            
+            if(e.message){
+                error.message= e.message;
+            }else{
+                error.message = CONFIG.ERR_UNKNOWN;
+            }
+            res.status(400).send(error);
+        }
+    }else{
+        error.message = CONFIG.ACTIVATE_USER;
+    }  
 });
 
 module.exports = router;

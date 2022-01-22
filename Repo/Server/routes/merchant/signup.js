@@ -16,7 +16,8 @@ router.post('/', async (req, res)=>{
 
         Mailer.sendMail({
             type:"signup verification",
-            vToken:result.vToken,email:result.email,
+            vToken:result.vToken,
+            email:result.email,
             firstName:result.firstName,
             lastName:result.lastName
         });

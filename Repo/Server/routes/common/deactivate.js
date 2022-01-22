@@ -17,10 +17,18 @@ router.post('/', async(req, res)=>{
     let error = {type: CONFIG.ERROR}
 
     try{
-        user.deactivationDate = new Date();
-        user.isActive = false;
+        let tkn = req.header('x-auth');
+        let query = {"tokens.token": tkn};
+        let update = {  
+            $pull: {tokens:{token:tkn}},
+            $set: {
+                deactivationDate: new Date(),
+                isActive: false
+            }
+        }
 
-        let updatedUser = user.save();
+        let updatedUser = await Merchant.findOneAndUpdate(query, update);
+
         res.json(updatedUser);
     }catch(e){
         if(e.message){

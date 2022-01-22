@@ -7,7 +7,7 @@ const CONFIG = require('../config');
 const {mongoose} = require('./../db/mongoose');
 const utils = require('../utils/utils');
 
-const merchantSchema = mongoose.Schema({
+const MerchantObj = {
     firstName:{
         type: String,
         required: [true, "Field FIRST NAME is required"],
@@ -84,6 +84,10 @@ const merchantSchema = mongoose.Schema({
         type: Date,
         default: null
     },
+    reactivationDate:{
+        type: Date,
+        default: null
+    },
     tokens:[
         {
             access:{
@@ -96,7 +100,9 @@ const merchantSchema = mongoose.Schema({
             }
         }
     ]
-});
+}
+
+const merchantSchema = mongoose.Schema(MerchantObj);
 
 merchantSchema.pre('save', async function(next){
     var user = this;

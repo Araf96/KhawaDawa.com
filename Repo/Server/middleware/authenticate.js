@@ -21,6 +21,12 @@ const authenticate = async(req, res, next) => {
                 message: CONFIG.AUTH_ERR
             });
         }
+        else if(!user.isActive){
+            return res.status(401).json({
+                type: CONFIG.ERROR,
+                message: CONFIG.ACTIVATE_USER
+            });
+        }
     }catch(e){
         return res.status(401).json({
             type: CONFIG.ERROR,

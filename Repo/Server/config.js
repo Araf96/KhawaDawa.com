@@ -25,6 +25,9 @@ module.exports = {
     DELETE_FAILED :  "Failed to delete menu. Please try again later.",
     DELETE_SUCCESS : "Menu named: @menuname was deleted." ,
     UPDATE_FAILED : "Failed to update menu.",
-    INSERT_FAILED : "Failed to insert menu."
+    INSERT_FAILED : "Failed to insert menu.",
+    ITEM_ADD_FAILED: "Failed to add item to the menu.",
+    ITEM_UPDATE_FAILED: "Failed to update item list.",
+    ITEM_DELETE_FAILED: "Failed to delete item. Please try again later."
 }
 

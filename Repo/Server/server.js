@@ -10,9 +10,13 @@ const verify = require('./routes/common/verify')
 const updateMerchant = require('./routes/merchant/updateMerchant')
 const deactivate = require('./routes/common/deactivate')
 
-const addFoodMenu = require('./routes/foodMenu/addFoodMenu');
-const deleteFoodMenu = require('./routes/foodMenu/deleteFoodMenu');
-const updateFoodMenu = require('./routes/foodMenu/updateFoodMenu');
+const foodMenu = require('./routes/foodMenu/foodMenu');
+// const addFoodMenu = require('./routes/foodMenu/addFoodMenu');
+// const deleteFoodMenu = require('./routes/foodMenu/deleteFoodMenu');
+// const updateFoodMenu = require('./routes/foodMenu/updateFoodMenu');
+// const addItem = require('./routes/foodMenu/items/addItem')
+// const addItem = require('./routes/foodMenu/items/addItem')
+// const addItem = require('./routes/foodMenu/items/addItem')
 
 var port = process.env.PORT || 3000;
 
@@ -26,9 +30,11 @@ app.use("/_update_merchant", updateMerchant);
 app.use("/_logout_m", logout);
 app.use("/_deactivate", deactivate);
 
-app.use("/_addFoodMenu", addFoodMenu);
-app.use("/_deleteFoodMenu", deleteFoodMenu);
-app.use("/_updateFoodMenu", updateFoodMenu);
+// app.use("/_addFoodMenu", addFoodMenu);
+// app.use("/_deleteFoodMenu", deleteFoodMenu);
+// app.use("/_updateFoodMenu", updateFoodMenu);
+
+app.use("/_foodmenu", foodMenu);
 
 app.listen(port, ()=>{
     console.log(`Server started on port: ${port}`);
